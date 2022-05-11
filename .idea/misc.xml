@@ -7,8 +7,15 @@
         <entry key="..\:/Repositorios/ProyectoDesarrolloMovil/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2265" />
         <entry key="..\:/Repositorios/ProyectoDesarrolloMovil/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.1606425702811245" />
         <entry key="..\:/Repositorios/ProyectoDesarrolloMovil/app/src/main/res/layout-w936dp/activity_login.xml" value="0.16222677595628415" />
+        <entry key="..\:/Repositorios/ProyectoDesarrolloMovil/app/src/main/res/layout/activity_iniciosesion.xml" value="0.2164855072463768" />
         <entry key="..\:/Repositorios/ProyectoDesarrolloMovil/app/src/main/res/layout/activity_login.xml" value="0.2151268115942029" />
         <entry key="..\:/Repositorios/ProyectoDesarrolloMovil/app/src/main/res/layout/activity_main.xml" value="0.2151268115942029" />
+        <entry key="..\:/Repositorios/ProyectoDesarrolloMovil/app/src/main/res/layout/activity_modificarvideo.xml" value="0.2164855072463768" />
+        <entry key="..\:/Repositorios/ProyectoDesarrolloMovil/app/src/main/res/layout/activity_registroestudiante.xml" value="0.2164855072463768" />
+        <entry key="..\:/Repositorios/ProyectoDesarrolloMovil/app/src/main/res/layout/activity_registrojefecarrera.xml" value="0.264" />
+        <entry key="..\:/Repositorios/ProyectoDesarrolloMovil/app/src/main/res/layout/activity_registrovideo.xml" value="0.264" />
+        <entry key="..\:/Repositorios/ProyectoDesarrolloMovil/app/src/main/res/layout/activity_videosestudiante.xml" value="0.2" />
+        <entry key="..\:/Repositorios/ProyectoDesarrolloMovil/app/src/main/res/layout/activity_videosjefecarrera.xml" value="0.2164855072463768" />
       </map>
     </option>
   </component>
