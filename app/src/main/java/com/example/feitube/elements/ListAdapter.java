@@ -2,7 +2,6 @@ package com.example.feitube.elements;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,8 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.feitube.ModificarVideo;
 import com.example.feitube.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
@@ -58,6 +55,10 @@ public class ListAdapter  extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     public void setItems(List<ElementoLista> lista){
         this.lista = lista;
+    }
+
+    public void actualizarDatos(){
+        this.notifyDataSetChanged();
     }
 
 
@@ -116,7 +117,7 @@ public class ListAdapter  extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
                                     if(task.isSuccessful()){
                                         Toast.makeText(this.context,"Video eliminado", Toast.LENGTH_SHORT).show();
                                         this.deleteItem();
-
+                                        actualizarDatos();
                                     }
                                 });
                             }).setNegativeButton(android.R.string.no, (dialog, which) -> {
