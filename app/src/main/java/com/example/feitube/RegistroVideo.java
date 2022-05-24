@@ -2,6 +2,7 @@ package com.example.feitube;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -57,7 +58,7 @@ public class RegistroVideo extends AppCompatActivity {
             nuevoVideo.put("programaEducativo", programaEducativo.getSelectedItem().toString());
             nuevoVideo.put("descripcion", descripcion.getText().toString());
             nuevoVideo.put("director", director.getText().toString());
-            nuevoVideo.put("cordinador", codirector.getText().toString());
+            nuevoVideo.put("codirector", codirector.getText().toString());
             nuevoVideo.put("sinodal", sinodal.getText().toString());
             CollectionReference table = this.db.collection("videos");
             String id = table.document().getId();
@@ -65,6 +66,7 @@ public class RegistroVideo extends AppCompatActivity {
                     .addOnCompleteListener(task -> {
                         if(task.isSuccessful()){
                             Toast.makeText(RegistroVideo.this,"Video registrado", Toast.LENGTH_SHORT).show();
+                            this.desplegarVideosJefeCarrera();
                         }else{
                             Toast.makeText(RegistroVideo.this,"No se pudo registrar el video", Toast.LENGTH_SHORT).show();
                         }
@@ -72,5 +74,10 @@ public class RegistroVideo extends AppCompatActivity {
         }else{
             Toast.makeText(RegistroVideo.this,"Hay campos vacios", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void desplegarVideosJefeCarrera(){
+        Intent videos =  new Intent(this, VideosJefeCarrera.class);
+        startActivity(videos);
     }
 }

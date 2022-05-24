@@ -2,6 +2,7 @@ package com.example.feitube;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -82,14 +83,20 @@ public class ModificarVideo extends AppCompatActivity {
         video.put("programaEducativo", programaEducativo.getSelectedItem().toString());
         video.put("descripcion", descripcion.getText().toString());
         video.put("director", director.getText().toString());
-        video.put("cordinador", codirector.getText().toString());
+        video.put("codirector", codirector.getText().toString());
         video.put("sinodal", sinodal.getText().toString());
         docRef.update(video).addOnCompleteListener(task -> {
             if(task.isSuccessful()){
                 Toast.makeText(ModificarVideo.this,"Video editado", Toast.LENGTH_SHORT).show();
+                this.desplegarVideosJefeCarrera();
             }else{
                 Toast.makeText(ModificarVideo.this,"No se pudo editado el video", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void desplegarVideosJefeCarrera(){
+        Intent videos =  new Intent(this, VideosJefeCarrera.class);
+        startActivity(videos);
     }
 }
