@@ -47,12 +47,18 @@ public class InicioSesion extends AppCompatActivity {
                         if( document.exists() ){
                             if(Objects.equals(document.getString("contraseña"), this.contraseña.getText().toString())){
                                 Toast.makeText(InicioSesion.this,"Sesion iniciada, !Hola "+ document.getString("nombre"), Toast.LENGTH_SHORT).show();
+                                this.desplegarVideosJefeCarrera();
                             }else{
                                 Toast.makeText(InicioSesion.this,"Matricula o contraseña incorrectas", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
                 });
+    }
+
+    private void desplegarVideosJefeCarrera(){
+        Intent videos =  new Intent(this, VideosJefeCarrera.class);
+        startActivity(videos);
     }
 
     private void desplegarRegistrar(){
