@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cv"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true" >
+
+    <LinearLayout
+        android:id="@+id/layoutTarget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:padding="8dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/nombreView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:layout_marginBottom="6dp"/>
+
+        <TextView
+            android:id="@+id/proyectoView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:layout_marginBottom="6dp"/>
+
+        <TextView
+            android:id="@+id/directorView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:layout_marginBottom="6dp"/>
+
+        <TextView
+            android:id="@+id/codirectorView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:layout_marginBottom="6dp"/>
+
+        <TextView
+            android:id="@+id/sinodalView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:layout_marginBottom="6dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="6dp">
+
+            <Button
+                android:id="@+id/btnVisualizar"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Visualizar"
+                android:textAlignment="center"
+                android:textSize="10sp">
+            </Button>
+
+            <Button
+                android:id="@+id/btnEditar"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Editar"
+                android:textSize="10sp">
+            </Button>
+
+            <Button
+                android:id="@+id/btnEliminar"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Eliminar"
+                android:textSize="10sp">
+            </Button>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

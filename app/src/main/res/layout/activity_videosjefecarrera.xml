@@ -10,12 +10,13 @@
         android:id="@+id/imageView5"
         android:layout_width="67dp"
         android:layout_height="45dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="56dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textView13"
-        app:layout_constraintHorizontal_bias="0.347"
+        app:layout_constraintHorizontal_bias="0.421"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.021"
         app:srcCompat="@drawable/uv" />
 
     <TextView
@@ -25,64 +26,79 @@
         android:layout_marginTop="44dp"
         android:text="LISTA VIDEOS"
         app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="169dp" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="50dp"
         android:layout_height="42dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnBuscarVideo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintHorizontal_bias="0.569"
         app:layout_constraintStart_toEndOf="@+id/textView13"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.35"
         app:srcCompat="@drawable/cerrar_sesion" />
 
-    <ListView
-        android:layout_width="367dp"
-        android:layout_height="548dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName9"
-        app:layout_constraintVertical_bias="0.0" />
-
     <EditText
-        android:id="@+id/editTextTextPersonName9"
+        android:id="@+id/campoBusqueda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/imageView8"
-        tools:layout_editor_absoluteY="96dp" />
+        app:layout_constraintBottom_toTopOf="@+id/listaVideosJefe"
+        app:layout_constraintEnd_toStartOf="@+id/btnBuscarVideo"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        app:layout_constraintVertical_bias="0.687"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/btnBuscarVideo"
         android:layout_width="36dp"
         android:layout_height="40dp"
-        android:layout_marginEnd="44dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.917"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.138"
+        app:layout_constraintVertical_bias="0.101"
         app:srcCompat="@drawable/lupa" />
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/btnDesplegarRegistrarVideo"
         android:layout_width="47dp"
         android:layout_height="46dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="3dp"
         android:layout_marginEnd="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName9"
-        app:layout_constraintHorizontal_bias="0.676"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView5"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/agregar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listaVideosJefe"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/campoBusqueda" />
 </androidx.constraintlayout.widget.ConstraintLayout>

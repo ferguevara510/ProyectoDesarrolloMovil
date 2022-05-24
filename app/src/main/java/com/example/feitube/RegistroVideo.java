@@ -57,7 +57,8 @@ public class RegistroVideo extends AppCompatActivity {
             nuevoVideo.put("programaEducativo", programaEducativo.getSelectedItem().toString());
             nuevoVideo.put("descripcion", descripcion.getText().toString());
             nuevoVideo.put("director", director.getText().toString());
-            nuevoVideo.put("coordinador", codirector.getText().toString());
+            nuevoVideo.put("cordinador", codirector.getText().toString());
+            nuevoVideo.put("sinodal", sinodal.getText().toString());
             CollectionReference table = this.db.collection("videos");
             String id = table.document().getId();
             table.document(id).set(nuevoVideo)
