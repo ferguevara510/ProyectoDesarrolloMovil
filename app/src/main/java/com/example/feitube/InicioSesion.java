@@ -50,7 +50,7 @@ public class InicioSesion extends AppCompatActivity {
                                 if(Objects.equals(document.getString("tipo"), "jefe")){
                                     this.desplegarVideosJefeCarrera();
                                 }else{
-                                    this.desplegarVideosJefeCarrera();
+                                    this.desplegarVideosEstudiantes();
                                 }
                             }else{
                                 Toast.makeText(InicioSesion.this,"Matricula o contraseña incorrectas", Toast.LENGTH_SHORT).show();
