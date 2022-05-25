@@ -1,6 +1,5 @@
 package com.example.feitube;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,11 +11,8 @@ import android.widget.ImageView;
 
 import com.example.feitube.elements.ElementoLista;
 import com.example.feitube.elements.ListAdapter;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +48,7 @@ public class VideosJefeCarrera extends AppCompatActivity {
     }
 
     public  void init(){
-        ListAdapter listAdapter = new ListAdapter(lista,this);
+        ListAdapter listAdapter = new ListAdapter(lista,this,false);
         content.setHasFixedSize(true);
         content.setLayoutManager(new LinearLayoutManager(this));
         content.setAdapter(listAdapter);

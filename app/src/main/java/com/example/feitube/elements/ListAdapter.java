@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.feitube.ModificarVideo;
 import com.example.feitube.R;
+import com.example.feitube.VisualizarVideo;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
@@ -23,15 +24,13 @@ public class ListAdapter  extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     private List<ElementoLista> lista;
     private LayoutInflater mInflater;
     private Context context;
+    private boolean isEstudiante;
 
-    public ListAdapter(){
-
-    }
-
-    public ListAdapter(List<ElementoLista> lista, Context context) {
+    public ListAdapter(List<ElementoLista> lista, Context context, boolean isEstudiante) {
         this.mInflater = LayoutInflater.from(context);
         this.lista = lista;
         this.context = context;
+        this.isEstudiante = isEstudiante;
     }
 
     @NonNull
@@ -82,6 +81,10 @@ public class ListAdapter  extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             btnEditar = itemView.findViewById(R.id.btnEditar);
             btnEliminar = itemView.findViewById(R.id.btnEliminar);
             btnVisualizar = itemView.findViewById(R.id.btnVisualizar);
+            if(isEstudiante){
+                btnEditar.setVisibility(View.INVISIBLE);
+                btnEliminar.setVisibility(View.INVISIBLE);
+            }
         }
 
         void bindData (final ElementoLista item){
@@ -125,6 +128,9 @@ public class ListAdapter  extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
                             }).show();
                     break;
                 case R.id.btnVisualizar:
+                    Intent visualizarVideo = new Intent(context, VisualizarVideo.class);
+                    visualizarVideo.putExtra("idVideo",id);
+                    context.startActivity(visualizarVideo);
                     break;
             }
         }

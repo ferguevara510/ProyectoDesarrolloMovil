@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -24,16 +25,21 @@ public class RegistroJefeCarrera extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registroestudiante);
+        setContentView(R.layout.activity_registrojefecarrera);
 
         this.nombre = findViewById(R.id.nombre);
         this.programaEducativo = findViewById(R.id.programaEducativo);
         this.matricula = findViewById(R.id.matriculaNueva);
         this.contraseña = findViewById(R.id.contraseñaNueva);
         this.confirmacion = findViewById(R.id.confirmacion);
-        Button registrar = findViewById(R.id.btnRegistrarEstudiante);
+        Button registrar = findViewById(R.id.btnRegistrarJefeCarrera);
         registrar.setOnClickListener(view -> {
             this.registrarEstudiante();
+        });
+
+        ImageView btnCambiarRegistroEstudiante = findViewById(R.id.btnCambiarRegistroEstudiante);
+        btnCambiarRegistroEstudiante.setOnClickListener(v -> {
+            this.desplegarRegistrarEstudiante();
         });
     }
 
@@ -67,6 +73,11 @@ public class RegistroJefeCarrera extends AppCompatActivity {
 
     private void desplegarInicioSesion(){
         Intent registrar =  new Intent(this, InicioSesion.class);
+        startActivity(registrar);
+    }
+
+    private void desplegarRegistrarEstudiante(){
+        Intent registrar =  new Intent(this, RegistroEstudiante.class);
         startActivity(registrar);
     }
 }
