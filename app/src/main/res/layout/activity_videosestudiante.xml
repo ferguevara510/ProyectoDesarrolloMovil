@@ -12,6 +12,8 @@
         android:layout_height="45dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="56dp"
+        android:layout_marginBottom="7dp"
+        app:layout_constraintBottom_toTopOf="@+id/campoBusquedaEstudiante"
         app:layout_constraintEnd_toStartOf="@+id/textView13"
         app:layout_constraintHorizontal_bias="0.347"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,54 +24,65 @@
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
         android:text="LISTA VIDEOS"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName9"
+        app:layout_constraintBottom_toTopOf="@+id/campoBusquedaEstudiante"
+        app:layout_constraintEnd_toStartOf="@+id/btnSalirSesion"
+        app:layout_constraintStart_toEndOf="@+id/imageView5"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="169dp" />
+        tools:ignore="MissingConstraints" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/btnSalirSesion"
         android:layout_width="50dp"
         android:layout_height="42dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="24dp"
+        android:layout_marginBottom="9dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnBuscarVideosEstudiantes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toEndOf="@+id/textView13"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/cerrar_sesion" />
 
-    <ListView
-        android:layout_width="370dp"
-        android:layout_height="599dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName9"
-        app:layout_constraintVertical_bias="0.058" />
-
     <EditText
-        android:id="@+id/editTextTextPersonName9"
+        android:id="@+id/campoBusquedaEstudiante"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/imageView8"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintBottom_toTopOf="@+id/listaVideosEstudiantes"
+        app:layout_constraintEnd_toStartOf="@+id/btnBuscarVideosEstudiantes"
+        app:layout_constraintHorizontal_bias="0.884"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="96dp" />
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/btnBuscarVideosEstudiantes"
         android:layout_width="36dp"
         android:layout_height="40dp"
-        android:layout_marginEnd="84dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/campoBusquedaEstudiante"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.135"
+        app:layout_constraintVertical_bias="0.109"
         app:srcCompat="@drawable/lupa" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listaVideosEstudiantes"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/campoBusquedaEstudiante" />
 </androidx.constraintlayout.widget.ConstraintLayout>

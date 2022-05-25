@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -35,6 +36,11 @@ public class RegistroEstudiante extends AppCompatActivity {
         Button registrar = findViewById(R.id.btnRegistrarEstudiante);
         registrar.setOnClickListener(view -> {
             this.registrarEstudiante();
+        });
+
+        ImageView btnCambiarRegistroJefe = findViewById(R.id.btnCambiarRegistroJefe);
+        btnCambiarRegistroJefe.setOnClickListener(v -> {
+            this.desplegarRegistrarJefe();
         });
     }
 
@@ -68,6 +74,11 @@ public class RegistroEstudiante extends AppCompatActivity {
 
     private void desplegarInicioSesion(){
         Intent registrar =  new Intent(this, InicioSesion.class);
+        startActivity(registrar);
+    }
+
+    private void desplegarRegistrarJefe(){
+        Intent registrar =  new Intent(this, RegistroJefeCarrera.class);
         startActivity(registrar);
     }
 }

@@ -47,7 +47,11 @@ public class InicioSesion extends AppCompatActivity {
                         if( document.exists() ){
                             if(Objects.equals(document.getString("contraseña"), this.contraseña.getText().toString())){
                                 Toast.makeText(InicioSesion.this,"Sesion iniciada, !Hola "+ document.getString("nombre"), Toast.LENGTH_SHORT).show();
-                                this.desplegarVideosJefeCarrera();
+                                if(Objects.equals(document.getString("tipo"), "jefe")){
+                                    this.desplegarVideosJefeCarrera();
+                                }else{
+                                    this.desplegarVideosJefeCarrera();
+                                }
                             }else{
                                 Toast.makeText(InicioSesion.this,"Matricula o contraseña incorrectas", Toast.LENGTH_SHORT).show();
                             }
@@ -58,6 +62,11 @@ public class InicioSesion extends AppCompatActivity {
 
     private void desplegarVideosJefeCarrera(){
         Intent videos =  new Intent(this, VideosJefeCarrera.class);
+        startActivity(videos);
+    }
+
+    private void desplegarVideosEstudiantes(){
+        Intent videos =  new Intent(this, VideosEstudiante.class);
         startActivity(videos);
     }
 
