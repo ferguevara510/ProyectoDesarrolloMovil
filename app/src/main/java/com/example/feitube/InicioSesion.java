@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.feitube.model.Usuario;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -47,7 +48,7 @@ public class InicioSesion extends AppCompatActivity {
                         if(task.isSuccessful()){
                             DocumentSnapshot document = task.getResult();
                             if( document.exists() ){
-                                if(Objects.equals(document.getString("contraseña"), this.contraseña.getText().toString())){
+                                if(Objects.equals(document.getString("contraseña"), Usuario.md5(this.contraseña.getText().toString()))){
                                     Toast.makeText(InicioSesion.this,"Sesion iniciada, !Hola "+ document.getString("nombre"), Toast.LENGTH_SHORT).show();
                                     if(Objects.equals(document.getString("tipo"), "jefe")){
                                         this.desplegarVideosJefeCarrera();
