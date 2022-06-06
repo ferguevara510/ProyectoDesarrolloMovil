@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -16,6 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class VideosEstudiante extends AppCompatActivity {
     private List<ElementoLista> lista;
@@ -54,6 +56,7 @@ public class VideosEstudiante extends AppCompatActivity {
         startActivity(registrar);
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private void buscarVideos(){
         String busqueda = this.campoBusqueda.getText().toString();
 
@@ -72,7 +75,7 @@ public class VideosEstudiante extends AppCompatActivity {
                     );
                     this.lista.add(elemento);
                 }
-                this.content.getAdapter().notifyDataSetChanged();
+                Objects.requireNonNull(this.content.getAdapter()).notifyDataSetChanged();
             }
         });
     }

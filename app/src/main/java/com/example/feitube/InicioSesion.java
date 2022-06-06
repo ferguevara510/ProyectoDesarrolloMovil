@@ -35,29 +35,35 @@ public class InicioSesion extends AppCompatActivity {
 
         registrar.setOnClickListener(view -> {
             this.desplegarRegistrar();
+            finish();
         });
 
     }
 
     private void iniciarSesion(){
-        db.collection("usuarios").document(this.matricula.getText().toString()).get()
-                .addOnCompleteListener(task -> {
-                    if(task.isSuccessful()){
-                        DocumentSnapshot document = task.getResult();
-                        if( document.exists() ){
-                            if(Objects.equals(document.getString("contraseña"), this.contraseña.getText().toString())){
-                                Toast.makeText(InicioSesion.this,"Sesion iniciada, !Hola "+ document.getString("nombre"), Toast.LENGTH_SHORT).show();
-                                if(Objects.equals(document.getString("tipo"), "jefe")){
-                                    this.desplegarVideosJefeCarrera();
+        if(!this.matricula.getText().toString().isEmpty() && !this.contraseña.getText().toString().isEmpty()){
+            db.collection("usuarios").document(this.matricula.getText().toString()).get()
+                    .addOnCompleteListener(task -> {
+                        if(task.isSuccessful()){
+                            DocumentSnapshot document = task.getResult();
+                            if( document.exists() ){
+                                if(Objects.equals(document.getString("contraseña"), this.contraseña.getText().toString())){
+                                    Toast.makeText(InicioSesion.this,"Sesion iniciada, !Hola "+ document.getString("nombre"), Toast.LENGTH_SHORT).show();
+                                    if(Objects.equals(document.getString("tipo"), "jefe")){
+                                        this.desplegarVideosJefeCarrera();
+                                    }else{
+                                        this.desplegarVideosEstudiantes();
+                                    }
+                                    finish();
                                 }else{
-                                    this.desplegarVideosEstudiantes();
+                                    Toast.makeText(InicioSesion.this,"Matricula o contraseña incorrectas", Toast.LENGTH_SHORT).show();
                                 }
-                            }else{
-                                Toast.makeText(InicioSesion.this,"Matricula o contraseña incorrectas", Toast.LENGTH_SHORT).show();
                             }
                         }
-                    }
-                });
+                    });
+        }else{
+            Toast.makeText(InicioSesion.this,"Hay campos vacios", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void desplegarVideosJefeCarrera(){

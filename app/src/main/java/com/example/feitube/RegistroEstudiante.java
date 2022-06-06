@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.feitube.model.Usuario;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -41,6 +42,7 @@ public class RegistroEstudiante extends AppCompatActivity {
         ImageView btnCambiarRegistroJefe = findViewById(R.id.btnCambiarRegistroJefe);
         btnCambiarRegistroJefe.setOnClickListener(v -> {
             this.desplegarRegistrarJefe();
+            finish();
         });
     }
 
@@ -52,7 +54,7 @@ public class RegistroEstudiante extends AppCompatActivity {
                 estudianteNuevo.put("nombre",this.nombre.getText().toString());
                 estudianteNuevo.put("programaEducativo",this.programaEducativo.getSelectedItem().toString());
                 estudianteNuevo.put("matricula",this.matricula.getText().toString());
-                estudianteNuevo.put("contraseña",this.contraseña.getText().toString());
+                estudianteNuevo.put("contraseña", Usuario.md5(this.contraseña.getText().toString()));
                 estudianteNuevo.put("tipo","estudiante");
 
                 this.db.collection("usuarios").document(this.matricula.getText().toString()).set(estudianteNuevo)
@@ -60,6 +62,7 @@ public class RegistroEstudiante extends AppCompatActivity {
                             if(task.isSuccessful()){
                                 Toast.makeText(RegistroEstudiante.this,"Estudiante registrado", Toast.LENGTH_SHORT).show();
                                 this.desplegarInicioSesion();
+                                finish();
                             }else{
                                 Toast.makeText(RegistroEstudiante.this,"No se pudo registrar el estudiante", Toast.LENGTH_SHORT).show();
                             }

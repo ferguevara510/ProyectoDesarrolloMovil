@@ -19,11 +19,25 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/textView15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Estudiante" />
+
+        <TextView
             android:id="@+id/nombreView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
             android:layout_marginBottom="6dp"/>
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Proyecto" />
 
         <TextView
             android:id="@+id/proyectoView"
@@ -33,6 +47,13 @@
             android:layout_marginBottom="6dp"/>
 
         <TextView
+            android:id="@+id/textView19"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Director" />
+
+        <TextView
             android:id="@+id/directorView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,11 +61,25 @@
             android:layout_marginBottom="6dp"/>
 
         <TextView
+            android:id="@+id/textView21"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Codirector" />
+
+        <TextView
             android:id="@+id/codirectorView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
             android:layout_marginBottom="6dp"/>
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Sinodal" />
 
         <TextView
             android:id="@+id/sinodalView"

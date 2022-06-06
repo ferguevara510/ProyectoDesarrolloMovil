@@ -39,6 +39,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="9dp"
+        android:contentDescription="Cerrar Sesion"
         app:layout_constraintBottom_toTopOf="@+id/btnBuscarVideosEstudiantes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"

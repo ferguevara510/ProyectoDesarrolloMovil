@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -16,6 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class VideosJefeCarrera extends AppCompatActivity {
     private List<ElementoLista> lista;
@@ -34,11 +36,13 @@ public class VideosJefeCarrera extends AppCompatActivity {
         ImageView btnDesplegarRegistrarVideo = findViewById(R.id.btnDesplegarRegistrarVideo);
         btnDesplegarRegistrarVideo.setOnClickListener(view -> {
             this.desplegarRegistrarVideo();
+            finish();
         });
 
         ImageView btnDesplegarInicioSesion = findViewById(R.id.btnDesplegarInicioSesion);
         btnDesplegarInicioSesion.setOnClickListener( view -> {
             this.desplegarInicioSesion();
+            finish();
         });
 
         ImageView btnBuscar = findViewById(R.id.btnBuscarVideo);
@@ -64,6 +68,7 @@ public class VideosJefeCarrera extends AppCompatActivity {
         startActivity(registrar);
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private void buscarVideos(){
         String busqueda = this.campoBusqueda.getText().toString();
 
@@ -82,7 +87,7 @@ public class VideosJefeCarrera extends AppCompatActivity {
                     );
                     this.lista.add(elemento);
                 }
-                this.content.getAdapter().notifyDataSetChanged();
+                Objects.requireNonNull(this.content.getAdapter()).notifyDataSetChanged();
             }
         });
     }

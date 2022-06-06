@@ -2,6 +2,7 @@ package com.example.feitube;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -12,7 +13,10 @@ import android.widget.Toast;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Locale;
 
 public class RegistroVideo extends AppCompatActivity {
 
@@ -25,6 +29,8 @@ public class RegistroVideo extends AppCompatActivity {
     private EditText director;
     private EditText codirector;
     private EditText sinodal;
+    private EditText fecha;
+    final Calendar myCalendar= Calendar.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +39,7 @@ public class RegistroVideo extends AppCompatActivity {
 
         Button btnRegistrar = (Button) findViewById(R.id.btnRegistrarVideo);
         this.enlace = findViewById(R.id.enlace);
+        this.fecha = findViewById(R.id.fecha);
         this.estudiante = findViewById(R.id.estudiante);
         this.proyecto = findViewById(R.id.proyecto);
         this.programaEducativo = findViewById(R.id.programaEducativo);
@@ -41,9 +48,24 @@ public class RegistroVideo extends AppCompatActivity {
         this.codirector = findViewById(R.id.codirector);
         this.sinodal = findViewById(R.id.sinodal);
 
+        DatePickerDialog.OnDateSetListener date = (view, year, month, day) -> {
+            myCalendar.set(Calendar.YEAR, year);
+            myCalendar.set(Calendar.MONTH,month);
+            myCalendar.set(Calendar.DAY_OF_MONTH,day);
+            updateLabel();
+        };
+
+        fecha.setOnClickListener(view -> new DatePickerDialog(this,date,myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show());
+
         btnRegistrar.setOnClickListener(view -> {
             this.registrarVideo();
         });
+    }
+
+    private void updateLabel(){
+        String myFormat="dd/MM/yy";
+        SimpleDateFormat dateFormat=new SimpleDateFormat(myFormat, Locale.US);
+        fecha.setText(dateFormat.format(myCalendar.getTime()));
     }
 
     private void registrarVideo(){
@@ -60,6 +82,7 @@ public class RegistroVideo extends AppCompatActivity {
             nuevoVideo.put("director", director.getText().toString());
             nuevoVideo.put("codirector", codirector.getText().toString());
             nuevoVideo.put("sinodal", sinodal.getText().toString());
+            nuevoVideo.put("fecha", fecha.getText().toString());
             CollectionReference table = this.db.collection("videos");
             String id = table.document().getId();
             table.document(id).set(nuevoVideo)
@@ -67,6 +90,7 @@ public class RegistroVideo extends AppCompatActivity {
                         if(task.isSuccessful()){
                             Toast.makeText(RegistroVideo.this,"Video registrado", Toast.LENGTH_SHORT).show();
                             this.desplegarVideosJefeCarrera();
+                            finish();
                         }else{
                             Toast.makeText(RegistroVideo.this,"No se pudo registrar el video", Toast.LENGTH_SHORT).show();
                         }

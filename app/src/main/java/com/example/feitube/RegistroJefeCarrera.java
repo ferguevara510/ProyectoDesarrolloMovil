@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.feitube.model.Usuario;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -35,6 +36,7 @@ public class RegistroJefeCarrera extends AppCompatActivity {
         Button registrar = findViewById(R.id.btnRegistrarJefeCarrera);
         registrar.setOnClickListener(view -> {
             this.registrarEstudiante();
+            finish();
         });
 
         ImageView btnCambiarRegistroEstudiante = findViewById(R.id.btnCambiarRegistroEstudiante);
@@ -51,7 +53,7 @@ public class RegistroJefeCarrera extends AppCompatActivity {
                 estudianteNuevo.put("nombre",this.nombre.getText().toString());
                 estudianteNuevo.put("programaEducativo",this.programaEducativo.getSelectedItem().toString());
                 estudianteNuevo.put("matricula",this.matricula.getText().toString());
-                estudianteNuevo.put("contraseña",this.contraseña.getText().toString());
+                estudianteNuevo.put("contraseña", Usuario.md5(this.contraseña.getText().toString()));
                 estudianteNuevo.put("tipo","jefe");
 
                 this.db.collection("usuarios").document(this.matricula.getText().toString()).set(estudianteNuevo)
@@ -59,6 +61,7 @@ public class RegistroJefeCarrera extends AppCompatActivity {
                             if(task.isSuccessful()){
                                 Toast.makeText(RegistroJefeCarrera.this,"Jefe de carrera registrado", Toast.LENGTH_SHORT).show();
                                 this.desplegarInicioSesion();
+                                finish();
                             }else{
                                 Toast.makeText(RegistroJefeCarrera.this,"No se pudo registrar el jefe de carrera", Toast.LENGTH_SHORT).show();
                             }
