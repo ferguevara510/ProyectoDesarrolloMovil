@@ -17,6 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 public class VideosJefeCarrera extends AppCompatActivity {
@@ -72,10 +73,11 @@ public class VideosJefeCarrera extends AppCompatActivity {
     private void buscarVideos(){
         String busqueda = this.campoBusqueda.getText().toString();
 
-        db.collection("videos").whereEqualTo("proyecto",busqueda).get().addOnCompleteListener(task -> {
+        db.collection("videos").get().addOnCompleteListener(task -> {
             lista.clear();
             if (task.isSuccessful()) {
                 ElementoLista elemento;
+
                 for (DocumentSnapshot snapshot : task.getResult()){
                     elemento = new ElementoLista(
                             snapshot.getString("estudiante"),
@@ -85,7 +87,13 @@ public class VideosJefeCarrera extends AppCompatActivity {
                             snapshot.getString("sinodal"),
                             snapshot.getId()
                     );
-                    this.lista.add(elemento);
+                    if(elemento.getCordinador().contains(busqueda) ||
+                            elemento.getProyecto().contains(busqueda) ||
+                            elemento.getDirector().contains(busqueda) ||
+                            elemento.getSinodal().contains(busqueda) ||
+                            elemento.getNombre().contains(busqueda)){
+                        this.lista.add(elemento);
+                    }
                 }
                 Objects.requireNonNull(this.content.getAdapter()).notifyDataSetChanged();
             }
