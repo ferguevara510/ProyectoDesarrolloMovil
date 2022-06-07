@@ -24,6 +24,7 @@ public class VisualizarVideo extends YouTubeBaseActivity {
     private TextView director;
     private TextView codirector;
     private TextView sinodal;
+    private TextView fecha;
     private String link;
 
     @Override
@@ -37,6 +38,7 @@ public class VisualizarVideo extends YouTubeBaseActivity {
         this.director = findViewById(R.id.seccionDirector);
         this.codirector = findViewById(R.id.seccionCodirector);
         this.sinodal = findViewById(R.id.seccionSinodal);
+        this.fecha = findViewById(R.id.seccionFecha);
         Bundle extras = getIntent().getExtras();
         String idVideo;
         if(extras != null) {
@@ -60,6 +62,7 @@ public class VisualizarVideo extends YouTubeBaseActivity {
                             this.director.setText(document.getString("director"));
                             this.codirector.setText(document.getString("codirector"));
                             this.sinodal.setText(document.getString("sinodal"));
+                            this.fecha.setText(document.getString("fecha"));
                         }
                         onInitializedListener = new YouTubePlayer.OnInitializedListener() {
                             @Override

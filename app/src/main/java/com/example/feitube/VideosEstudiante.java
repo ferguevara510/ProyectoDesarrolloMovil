@@ -17,6 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 public class VideosEstudiante extends AppCompatActivity {
@@ -60,20 +61,27 @@ public class VideosEstudiante extends AppCompatActivity {
     private void buscarVideos(){
         String busqueda = this.campoBusqueda.getText().toString();
 
-        db.collection("videos").whereEqualTo("proyecto",busqueda).get().addOnCompleteListener(task -> {
+        db.collection("videos").get().addOnCompleteListener(task -> {
             lista.clear();
             if (task.isSuccessful()) {
                 ElementoLista elemento;
                 for (DocumentSnapshot snapshot : task.getResult()){
                     elemento = new ElementoLista(
-                            snapshot.getString("estudiante"),
-                            snapshot.getString("proyecto"),
-                            snapshot.getString("director"),
-                            snapshot.getString("codirector"),
-                            snapshot.getString("sinodal"),
-                            snapshot.getId()
+                        snapshot.getString("estudiante"),
+                        snapshot.getString("proyecto"),
+                        snapshot.getString("director"),
+                        snapshot.getString("codirector"),
+                        snapshot.getString("sinodal"),
+                        snapshot.getId()
                     );
-                    this.lista.add(elemento);
+
+                    if(elemento.getCordinador().toLowerCase(Locale.ROOT).contains(busqueda.toLowerCase(Locale.ROOT)) ||
+                            elemento.getProyecto().toLowerCase(Locale.ROOT).contains(busqueda.toLowerCase(Locale.ROOT)) ||
+                            elemento.getDirector().toLowerCase(Locale.ROOT).contains(busqueda.toLowerCase(Locale.ROOT)) ||
+                            elemento.getSinodal().toLowerCase(Locale.ROOT).contains(busqueda.toLowerCase(Locale.ROOT)) ||
+                            elemento.getNombre().toLowerCase(Locale.ROOT).contains(busqueda.toLowerCase(Locale.ROOT))){
+                        this.lista.add(elemento);
+                    }
                 }
                 Objects.requireNonNull(this.content.getAdapter()).notifyDataSetChanged();
             }

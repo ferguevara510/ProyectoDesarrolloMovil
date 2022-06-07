@@ -102,4 +102,18 @@
         android:layout_height="wrap_content"
         android:padding="6dp"
         android:text="TextView" />
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="6dp"
+        android:textStyle="bold"
+        android:text="Fecha de presentacion" />
+
+    <TextView
+        android:id="@+id/seccionFecha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="6dp"
+        android:text="TextView" />
 </LinearLayout>
